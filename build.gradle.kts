@@ -3,7 +3,7 @@ plugins {
     id("com.coditory.manifest") version "0.2.6"
 }
 
-group = "org.seekers.example" // TODO Change group
+group = "org.seekers.groovy"
 version = "1.0-SNAPSHOT"
 
 repositories {
@@ -13,10 +13,14 @@ repositories {
     }
 }
 
+val seekersVersion = "47cfdb1"
+val groovyVersion = "3.0.15"
+
 dependencies {
     testImplementation("org.jetbrains.kotlin:kotlin-test")
     implementation(kotlin("stdlib"))
-    implementation("com.github.seekers-dev:seekers-server:47cfdb1")
+    implementation("com.github.seekers-dev:seekers-server:$seekersVersion")
+    implementation("org.codehaus.groovy:groovy-all:$groovyVersion")
 }
 
 tasks.test {
