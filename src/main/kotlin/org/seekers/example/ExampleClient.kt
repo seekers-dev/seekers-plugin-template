@@ -1,4 +1,4 @@
-package org.seekers.groovy
+package org.seekers.example
 
 import io.grpc.ManagedChannelBuilder
 import io.grpc.ManagedChannel
@@ -9,7 +9,7 @@ import org.seekers.grpc.net.SeekersGrpc.SeekersBlockingStub
 import java.io.File
 import java.io.IOException
 
-class GroovyClient: SeekersClient {
+class ExampleClient: SeekersClient {
 
     private val channel: ManagedChannel = ManagedChannelBuilder.forAddress("localhost", 8888)
         .usePlaintext().build()

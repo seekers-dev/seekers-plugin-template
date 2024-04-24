@@ -1,26 +1,30 @@
 plugins {
-    kotlin("jvm") version "1.9.22"
-    id("com.coditory.manifest") version "0.2.6"
+    kotlin("jvm") version "1.9.23"
+    kotlin("kapt") version "1.9.23"
+}
+buildscript {
+    dependencies {
+        classpath(kotlin("gradle-plugin", version = "1.4.21"))
+    }
 }
 
-group = "org.seekers.groovy"
+// TODO Change group
+group = "org.seekers.example"
 version = "1.0-SNAPSHOT"
 
 repositories {
     mavenCentral()
-    maven {
+    maven { // Only used for snapshot builds
         url = uri("https://jitpack.io")
     }
 }
 
-val seekersVersion = "47cfdb1"
-val groovyVersion = "3.0.15"
+val seekersVersion = "-SNAPSHOT"
 
 dependencies {
     testImplementation("org.jetbrains.kotlin:kotlin-test")
     implementation(kotlin("stdlib"))
     implementation("com.github.seekers-dev:seekers-server:$seekersVersion")
-    implementation("org.codehaus.groovy:groovy-all:$groovyVersion")
 }
 
 tasks.test {
@@ -30,11 +34,37 @@ kotlin {
     jvmToolchain(11)
 }
 
-manifest {
-    attributes = mapOf(
-        Pair("Plugin-Class", "$group.SeekersPlugin"),
-        Pair("Plugin-Id", "seekers-plugin-template"),
-        Pair("Plugin-Provider", "Seekers Contributors"),
-        Pair("Plugin-Version", version.toString())
-    )
+tasks.named("build") {
+    dependsOn(tasks.named("plugin"))
+}
+tasks.register<Jar>("plugin") {
+    description = "Create uber jar"
+    group = "build"
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+
+    manifest { // TODO Change manifest for your project
+        attributes["Plugin-Class"] = "${project.group}.ExamplePlugin"
+        attributes["Plugin-Id"] = project.name
+        attributes["Plugin-Provider"] = "Seekers Contributors"
+        attributes["Plugin-Version"] = version.toString()
+    }
+
+    archiveBaseName.set(project.name)
+    archiveClassifier.set("uber")
+
+    with(tasks.named<Jar>("jar").get())
+    dependsOn(configurations.runtimeClasspath)
+    // List of all dependencies that your project needs and that aren't already supplied by the server
+    // TODO You may want to update this list depending on your added dependencies
+    val libs = arrayOf("kotlin-stdlib")
+
+    fun matchesAny(name: String): Boolean {
+        for (lib in libs) {
+            if (name.contains(lib)) return true
+        }
+        return false
+    }
+
+    from(configurations.runtimeClasspath.get().filter{ matchesAny(it.name) }
+        .map { if (it.isDirectory) it else zipTree(it) })
 }

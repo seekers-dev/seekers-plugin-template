@@ -1,11 +1,11 @@
-package org.seekers.groovy
+package org.seekers.example
 
 import org.seekers.plugin.LanguageLoader
 import org.seekers.plugin.SeekersExtension
 
-class GroovyExtension: SeekersExtension {
+class ExampleExtension: SeekersExtension {
     override fun addLanguageLoaders(loaders: MutableList<LanguageLoader>) {
         // TODO Add here your language loaders
-        loaders.add(GroovyLoader())
+        loaders.add(ExampleLoader())
     }
 }

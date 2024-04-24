@@ -1,8 +1,8 @@
-package org.seekers.groovy
+package org.seekers.example
 
 import org.pf4j.Plugin
 
-class GroovyPlugin: Plugin() {
+class ExamplePlugin: Plugin() {
 
     override fun start() {
         // TODO Start plugin
