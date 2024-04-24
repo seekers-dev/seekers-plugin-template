@@ -1,3 +1,7 @@
+/*/
+/build
+!src
+
 # Compiled class file
 *.class
 
