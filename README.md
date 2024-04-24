@@ -1,5 +1,17 @@
 <h1 align="center">Seekers Plugin Template</h1>
 
+<p align="center">
+    <a href="https://github.com/seekers-dev/seekers-plugin-template/actions/workflows/codeql.yml">
+        <img src="https://github.com/seekers-dev/seekers-plugin-template/actions/workflows/codeql.yml/badge.svg" alt="CodeQL">
+    </a>
+    <a href="https://github.com/seekers-dev/seekers-plugin-template/actions/workflows/gradle.yml">
+        <img src="https://github.com/seekers-dev/seekers-plugin-template/actions/workflows/gradle.yml/badge.svg" alt="Java CI with Gradle">
+    </a>
+    <img alt="GitHub License" src="https://img.shields.io/github/license/seekers-dev/seekers-plugin-template">
+    <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/seekers-dev/seekers-plugin-template">
+    <img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/m/seekers-dev/seekers-plugin-template">
+</p>
+
 You want to easily create a new plugin for seekers? This is your starting point!
 
 ## Extensions
