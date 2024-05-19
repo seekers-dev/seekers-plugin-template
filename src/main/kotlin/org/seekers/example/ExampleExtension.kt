@@ -19,7 +19,8 @@ package org.seekers.example
 
 import org.ini4j.Profile
 import org.pf4j.Extension
-import org.seekers.plugin.LanguageLoader
+import org.seekers.plugin.ClientLoader
+import org.seekers.plugin.GameMode
 import org.seekers.plugin.SeekersExtension
 
 @Extension
@@ -28,8 +29,11 @@ class ExampleExtension: SeekersExtension {
         // TODO Setup your plugin with the properties of the section
     }
 
-    override fun addLanguageLoaders(loaders: MutableList<LanguageLoader>) {
-        // TODO Add here your language loaders
+    override fun addClientLoaders(loaders: MutableList<ClientLoader>) {
         loaders.add(ExampleLoader)
+    }
+
+    override fun addGameModes(modes: MutableList<GameMode>) {
+        TODO("Not yet implemented")
     }
 }

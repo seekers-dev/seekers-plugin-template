@@ -20,11 +20,17 @@ repositories {
 }
 
 val seekersVersion = "-SNAPSHOT"
+val pf4jVersion = "3.11.0"
+val ini4jVersion = "0.5.4"
 
 dependencies {
-    testImplementation("org.jetbrains.kotlin:kotlin-test")
     implementation(kotlin("stdlib"))
     implementation("com.github.seekers-dev:seekers-server:$seekersVersion")
+    implementation("org.pf4j:pf4j:${pf4jVersion}")
+    implementation("org.ini4j:ini4j:${ini4jVersion}")
+
+    kapt("org.pf4j:pf4j:${pf4jVersion}")
+    testImplementation("org.jetbrains.kotlin:kotlin-test")
 }
 
 tasks.test {

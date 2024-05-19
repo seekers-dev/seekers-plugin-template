@@ -18,9 +18,9 @@
 package org.seekers.example
 
 import org.seekers.grpc.SeekersClient
-import org.seekers.plugin.LanguageLoader
+import org.seekers.plugin.ClientLoader
 
-object ExampleLoader: LanguageLoader {
+object ExampleLoader: ClientLoader {
     override fun recognizedPatterns(): Collection<String> {
         return listOf(".abc", ".xyz") // TODO Add your patterns here
     }
